@@ -1,0 +1,40 @@
+
+
+{% extends 'pages\base.html' %}
+
+{% block content %}
+
+<form   mothod = POST
+action = " {% url "search_events" %}">
+{% csrf_token %}
+
+
+   <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched"><br><br>
+  <button class="btn btn-outline-secondary" type="submit">Search</button>
+</form>
+
+
+    {% if searched %}
+    
+    <h1> You Searched For {{searched}}</h1>
+    <br>
+    <br>
+    {% for event in events   %}
+
+       {{event}}
+    
+    
+    {% endfor %}
+       
+    {% else %}
+
+        <h1> Hey! You forget to search something!!!</h1>
+
+        
+    {% endif %}
+   
+
+{% endblock %}
+
+    
+
